@@ -7,6 +7,7 @@ public class scr_pathFinder : MonoBehaviour {
     // Initialize the public variables
     public Transform[] waypointTransforms;
     public int[] waypointAlarms;
+    public AudioSource[] waypointAudioPlayers;
     public float movementSpeed;
     public float rotationSpeed;
 

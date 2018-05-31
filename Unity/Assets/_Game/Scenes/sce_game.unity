@@ -2039,7 +2039,7 @@ GameObject:
   m_Layer: 0
   m_Name: Waypoint 2
   m_TagString: Untagged
-  m_Icon: {fileID: -6488666005112524639, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 7240890024493199768, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2210,7 +2210,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 427875105}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.599, y: 0.658, z: -5.45}
+  m_LocalPosition: {x: -1.51, y: 0.658, z: -8.78}
   m_LocalScale: {x: 5.5, y: 5.5, z: 5.5}
   m_Children:
   - {fileID: 78519349}
@@ -2252,6 +2252,7 @@ MonoBehaviour:
   - {fileID: 1502721197}
   - {fileID: 547215314}
   waypointAlarms: 0000000000000000e8030000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  waypointAudioPlayers: []
   movementSpeed: 0.005
   rotationSpeed: 0.015
 --- !u!1 &429927172
