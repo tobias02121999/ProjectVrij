@@ -11,6 +11,7 @@ public class scr_button : MonoBehaviour {
     public Renderer screenRenderer;
     public Material screenMaterialRight;
     public Material screenMaterialWrong;
+    public Material screenMaterialEmpty;
     public Material materialGreenLit;
     public int rendererIndex;
 
@@ -80,6 +81,11 @@ public class scr_button : MonoBehaviour {
         {
             buttonStatePressed.SetActive(false);
             buttonStateReleased.SetActive(true);
+        }
+
+        if (console.GetComponent<scr_console>().waitAlarm <= 0f)
+        {
+            screenRenderer.material = screenMaterialEmpty;
         }
 	}
 

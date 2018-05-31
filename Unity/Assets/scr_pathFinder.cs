@@ -12,6 +12,7 @@ public class scr_pathFinder : MonoBehaviour {
 
     // Initialize the private variables
     private int currentWaypoint;
+    private int alarm;
 
 	// Use this for initialization
 	void Start ()
@@ -30,11 +31,17 @@ public class scr_pathFinder : MonoBehaviour {
             {
                 transform.position = Vector3.MoveTowards(transform.position, waypointTransforms[currentWaypoint].position, movementSpeed);
                 transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, targetDirection, rotationSpeed, 0f));
+                alarm = waypointAlarms[currentWaypoint];
             }
             else
             {
-                currentWaypoint++;
+                if (alarm <= 0)
+                {
+                    currentWaypoint++;
+                }
             }
         }
+
+        alarm--;
 	}
 }
