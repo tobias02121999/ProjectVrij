@@ -15,6 +15,15 @@ public class scr_console : MonoBehaviour {
     public Material materialBlueLit;
 
     [HideInInspector]
+    public bool redIsLit;
+
+    [HideInInspector]
+    public bool greenIsLit;
+
+    [HideInInspector]
+    public bool blueIsLit;
+
+    [HideInInspector]
     public bool materialSet;
 
     [HideInInspector]
@@ -44,14 +53,17 @@ public class scr_console : MonoBehaviour {
                     {
                         case 0:
                             renderers[i].material = materialRedLit;
+                            redIsLit = true;
                             break;
 
                         case 1:
                             renderers[i].material = materialGreenLit;
+                            greenIsLit = true;
                             break;
 
                         case 2:
                             renderers[i].material = materialBlueLit;
+                            blueIsLit = true;
                             break;
                     }
                 }
@@ -61,14 +73,17 @@ public class scr_console : MonoBehaviour {
                     {
                         case 0:
                             renderers[i].material = materialRed;
+                            redIsLit = false;
                             break;
 
                         case 1:
                             renderers[i].material = materialGreen;
+                            greenIsLit = false;
                             break;
 
                         case 2:
                             renderers[i].material = materialBlue;
+                            blueIsLit = false;
                             break;
                     }
                 }
@@ -83,6 +98,10 @@ public class scr_console : MonoBehaviour {
             renderers[0].material = materialRed;
             renderers[1].material = materialGreen;
             renderers[2].material = materialBlue;
+
+            redIsLit = false;
+            greenIsLit = false;
+            blueIsLit = false;
         }
 
         waitAlarm--;
