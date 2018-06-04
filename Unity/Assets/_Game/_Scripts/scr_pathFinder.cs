@@ -11,8 +11,10 @@ public class scr_pathFinder : MonoBehaviour {
     public float movementSpeed;
     public float rotationSpeed;
 
+    [HideInInspector]
+    public int currentWaypoint;
+
     // Initialize the private variables
-    private int currentWaypoint;
     private int alarm;
 
 	// Use this for initialization
