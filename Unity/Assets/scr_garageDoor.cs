@@ -12,11 +12,21 @@ public class scr_garageDoor : MonoBehaviour {
     public float doorMinHeight;
     public float doorMaxHeight;
     public GameObject angryRobots;
+    public Light coldRoomLight;
+    public Light hotRoomLight;
+    public Light furnaceLight;
+
+    // Initialize the private variables
+    private float coldRoomLightIntensity;
+    private float hotRoomLightIntensity;
+    private float furnaceLightIntensity;
 
     // Use this for initialization
     void Start()
     {
-
+        coldRoomLightIntensity = coldRoomLight.intensity;
+        hotRoomLightIntensity = hotRoomLight.intensity;
+        furnaceLightIntensity = furnaceLight.intensity;
     }
 
     // Update is called once per frame
@@ -36,5 +46,9 @@ public class scr_garageDoor : MonoBehaviour {
         {
             angryRobots.SetActive(true);
         }
+
+        coldRoomLight.intensity = coldRoomLightIntensity - (transform.position.y - doorMinHeight);
+        hotRoomLight.intensity = (transform.position.y - doorMinHeight) * hotRoomLightIntensity;
+        furnaceLight.intensity = (transform.position.y - doorMinHeight) * furnaceLightIntensity;
     }
 }
