@@ -31,8 +31,21 @@ public class scr_pathFinder : MonoBehaviour {
             if (transform.position != waypointTransforms[currentWaypoint].position)
             {
                 transform.position = Vector3.MoveTowards(transform.position, waypointTransforms[currentWaypoint].position, movementSpeed);
-                transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, targetDirection, rotationSpeed, 0f));
+
+                if (rotationSpeed > 0f)
+                {
+                    transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.forward, targetDirection, rotationSpeed, 0f));
+                }
+                
                 alarm = waypointAlarms[currentWaypoint];
+
+                if (waypointAudioPlayers[currentWaypoint] != null)
+                {
+                    if (!waypointAudioPlayers[currentWaypoint].isPlaying)
+                    {
+                        waypointAudioPlayers[currentWaypoint].Play();
+                    }
+                }
             }
             else
             {
