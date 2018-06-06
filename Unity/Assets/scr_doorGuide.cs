@@ -10,62 +10,65 @@ public class scr_doorGuide : MonoBehaviour {
     public float doorCloseSpeed;
     public float doorOpenRange;
     public float doorCloseAlarmDuration;
+    public float currentYRotation = 180;
     public int waypointTriggerId;
     public Component script;
 
     // Initialize the private variables
-    private float currentYRotation = 180;
     private float doorCloseAlarm;
     private bool isOpened;
 
 	// Use this for initialization
 	void Start ()
     {
-
+        
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        if (guide.GetComponent<scr_pathFinder>().currentWaypoint > waypointTriggerId && !isOpened)
+        if (guide != null)
         {
-            if (doorOpenRange > currentYRotation + doorOpenSpeed)
+            if (guide.GetComponent<scr_pathFinder>().currentWaypoint > waypointTriggerId && !isOpened)
             {
-                currentYRotation += doorOpenSpeed;
+                if (doorOpenRange > currentYRotation + doorOpenSpeed)
+                {
+                    currentYRotation += doorOpenSpeed;
+                }
+
+                if (doorOpenRange < currentYRotation - doorOpenSpeed)
+                {
+                    currentYRotation -= doorOpenSpeed;
+                }
+
+                if (!(doorOpenRange > currentYRotation + doorOpenSpeed) && !(doorOpenRange < currentYRotation - doorOpenSpeed))
+                {
+                    isOpened = true;
+                    doorCloseAlarm = doorCloseAlarmDuration;
+                }
             }
 
-            if (doorOpenRange < currentYRotation - doorOpenSpeed)
+            if (doorCloseAlarm <= 0f && isOpened)
             {
-                currentYRotation -= doorOpenSpeed;
+                if (currentYRotation < 180 - doorCloseSpeed)
+                {
+                    currentYRotation += doorCloseSpeed;
+                }
+
+                if (currentYRotation > 180 + doorCloseSpeed)
+                {
+                    currentYRotation -= doorCloseSpeed;
+                }
+
+                if (!(currentYRotation < 180 - doorCloseSpeed) && !(currentYRotation > 180 + doorCloseSpeed))
+                {
+                    GetComponent<scr_doorGuide>().enabled = false;
+                }
             }
 
-            if (!(doorOpenRange > currentYRotation + doorOpenSpeed) && !(doorOpenRange < currentYRotation - doorOpenSpeed))
-            {
-                isOpened = true;
-                doorCloseAlarm = doorCloseAlarmDuration;
-            }
+            doorCloseAlarm--;
+
+            transform.rotation = Quaternion.Euler(0f, currentYRotation, 0f);
         }
-
-        if (doorCloseAlarm <= 0f && isOpened)
-        {
-            if (currentYRotation < 180 - doorCloseSpeed)
-            {
-                currentYRotation += doorCloseSpeed;
-            }
-
-            if (currentYRotation > 180 + doorCloseSpeed)
-            {
-                currentYRotation -= doorCloseSpeed;
-            }
-
-            if (!(currentYRotation < 180 - doorCloseSpeed) && !(currentYRotation > 180 + doorCloseSpeed))
-            {
-                GetComponent<scr_doorGuide>().enabled = false;
-            }
-        }
-
-        doorCloseAlarm--;
-
-        transform.rotation = Quaternion.Euler(0f, currentYRotation, 0f);
 	}
 }
