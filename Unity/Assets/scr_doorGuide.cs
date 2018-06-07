@@ -5,18 +5,18 @@ using UnityEngine;
 public class scr_doorGuide : MonoBehaviour {
 
     // Initialize the public variables
-    public GameObject guide;
+    public GameObject[] targetPathObject;
     public float doorOpenSpeed;
     public float doorCloseSpeed;
     public float doorOpenRange;
     public float doorCloseAlarmDuration;
     public float currentYRotation = 180;
-    public int waypointTriggerId;
-    public Component script;
+    public int[] waypointTriggerId;
 
     // Initialize the private variables
     private float doorCloseAlarm;
     private bool isOpened;
+    private int currentWaypointTriggerId;
 
 	// Use this for initialization
 	void Start ()
@@ -27,48 +27,49 @@ public class scr_doorGuide : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        if (guide != null)
+        if (targetPathObject[currentWaypointTriggerId].GetComponent<scr_pathFinder>().currentWaypoint > waypointTriggerId[currentWaypointTriggerId] && !isOpened)
         {
-            if (guide.GetComponent<scr_pathFinder>().currentWaypoint > waypointTriggerId && !isOpened)
+            if (doorOpenRange > currentYRotation + doorOpenSpeed)
             {
-                if (doorOpenRange > currentYRotation + doorOpenSpeed)
-                {
-                    currentYRotation += doorOpenSpeed;
-                }
-
-                if (doorOpenRange < currentYRotation - doorOpenSpeed)
-                {
-                    currentYRotation -= doorOpenSpeed;
-                }
-
-                if (!(doorOpenRange > currentYRotation + doorOpenSpeed) && !(doorOpenRange < currentYRotation - doorOpenSpeed))
-                {
-                    isOpened = true;
-                    doorCloseAlarm = doorCloseAlarmDuration;
-                }
+                currentYRotation += doorOpenSpeed;
             }
 
-            if (doorCloseAlarm <= 0f && isOpened)
+            if (doorOpenRange < currentYRotation - doorOpenSpeed)
             {
-                if (currentYRotation < 180 - doorCloseSpeed)
-                {
-                    currentYRotation += doorCloseSpeed;
-                }
-
-                if (currentYRotation > 180 + doorCloseSpeed)
-                {
-                    currentYRotation -= doorCloseSpeed;
-                }
-
-                if (!(currentYRotation < 180 - doorCloseSpeed) && !(currentYRotation > 180 + doorCloseSpeed))
-                {
-                    GetComponent<scr_doorGuide>().enabled = false;
-                }
+                currentYRotation -= doorOpenSpeed;
             }
 
-            doorCloseAlarm--;
-
-            transform.rotation = Quaternion.Euler(0f, currentYRotation, 0f);
+            if (!(doorOpenRange > currentYRotation + doorOpenSpeed) && !(doorOpenRange < currentYRotation - doorOpenSpeed))
+            {
+                isOpened = true;
+                doorCloseAlarm = doorCloseAlarmDuration;
+            }
         }
-	}
+
+        Debug.Log(targetPathObject[currentWaypointTriggerId].GetComponent<scr_pathFinder>().currentWaypoint);
+        Debug.Log(waypointTriggerId[currentWaypointTriggerId]);
+
+        if (doorCloseAlarm <= 0f && isOpened)
+        {
+            if (currentYRotation < 180 - doorCloseSpeed)
+            {
+                currentYRotation += doorCloseSpeed;
+            }
+
+            if (currentYRotation > 180 + doorCloseSpeed)
+            {
+                currentYRotation -= doorCloseSpeed;
+            }
+
+            if (!(currentYRotation < 180 - doorCloseSpeed) && !(currentYRotation > 180 + doorCloseSpeed))
+            {
+                currentWaypointTriggerId++;
+                isOpened = false;
+            }
+        }
+
+        doorCloseAlarm--;
+
+        transform.rotation = Quaternion.Euler(0f, currentYRotation, 0f);
+    }
 }
