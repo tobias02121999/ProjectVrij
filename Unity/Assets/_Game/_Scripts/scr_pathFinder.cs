@@ -29,7 +29,7 @@ public class scr_pathFinder : MonoBehaviour {
     {
         Vector3 targetDirection = waypointTransforms[currentWaypoint].position - transform.position;
 
-        if (currentWaypoint <= waypointTransforms.Length - 1)
+        if (currentWaypoint <= waypointTransforms.Length - 1 && waypointTransforms[currentWaypoint].gameObject.activeSelf)
         {
             if (transform.position != waypointTransforms[currentWaypoint].position)
             {
