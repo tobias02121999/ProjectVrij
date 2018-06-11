@@ -8,6 +8,7 @@ public class scr_pathFinder : MonoBehaviour {
     public Transform[] waypointTransforms;
     public int[] waypointAlarms;
     public AudioSource[] waypointAudioPlayers;
+    public GameObject[] waypointObjects;
     public float movementSpeed;
     public float rotationSpeed;
 
@@ -28,7 +29,7 @@ public class scr_pathFinder : MonoBehaviour {
     {
         Vector3 targetDirection = waypointTransforms[currentWaypoint].position - transform.position;
 
-        if (currentWaypoint <= waypointTransforms.Length - 1)
+        if (currentWaypoint <= waypointTransforms.Length - 1 && waypointTransforms[currentWaypoint].gameObject.activeSelf)
         {
             if (transform.position != waypointTransforms[currentWaypoint].position)
             {
@@ -54,6 +55,7 @@ public class scr_pathFinder : MonoBehaviour {
                 if (alarm <= 0)
                 {
                     currentWaypoint++;
+                    waypointObjects[currentWaypoint].SetActive(true);
                 }
             }
         }

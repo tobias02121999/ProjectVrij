@@ -7,7 +7,7 @@ public class scr_wheelchair : MonoBehaviour {
     // Initialize the public variables
     public GameObject guide;
     public GameObject guideWheelchairModel;
-    public int waypointTrigger;
+    public int waypointModelTrigger;
 
 	// Use this for initialization
 	void Start ()
@@ -18,7 +18,7 @@ public class scr_wheelchair : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-		if (guide.GetComponent<scr_pathFinder>().currentWaypoint > waypointTrigger)
+		if (guide.GetComponent<scr_pathFinder>().currentWaypoint > waypointModelTrigger)
         {
             GetComponent<scr_pathFinder>().enabled = true;
             guideWheelchairModel.SetActive(true);
