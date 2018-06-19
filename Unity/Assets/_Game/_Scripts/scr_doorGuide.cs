@@ -46,9 +46,6 @@ public class scr_doorGuide : MonoBehaviour {
             }
         }
 
-        Debug.Log(targetPathObject[currentWaypointTriggerId].GetComponent<scr_pathFinder>().currentWaypoint);
-        Debug.Log(waypointTriggerId[currentWaypointTriggerId]);
-
         if (doorCloseAlarm <= 0f && isOpened)
         {
             if (currentYRotation < 180 - doorCloseSpeed)

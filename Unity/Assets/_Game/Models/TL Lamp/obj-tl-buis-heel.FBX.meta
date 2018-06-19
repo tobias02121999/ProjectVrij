@@ -1,16 +1,32 @@
 fileFormatVersion: 2
-guid: 5d32b92fd5c039a47aba182a7ff74ba8
+guid: 32f0079d573f2e341bf1b8b0a884628b
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2100000: lambert1
-    2100002: screen_Mat
-    2100004: secondaryCol_mat
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: oldPC
+    100000: Line010
+    100002: Line011
+    100004: Line012
+    100006: //RootNode
+    100008: Rectangle013
+    400000: Line010
+    400002: Line011
+    400004: Line012
+    400006: //RootNode
+    400008: Rectangle013
+    2100000: 'Material #0'
+    2100002: No Name
+    2300000: Line010
+    2300002: Line011
+    2300004: Line012
+    2300006: Rectangle013
+    3300000: Line010
+    3300002: Line011
+    3300004: Line012
+    3300006: Rectangle013
+    4300000: Rectangle013
+    4300002: Line011
+    4300004: Line012
+    4300006: Line010
   externalObjects: {}
   materials:
     importMaterials: 1
