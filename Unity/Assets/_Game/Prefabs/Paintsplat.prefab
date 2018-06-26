@@ -59,7 +59,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 95eae4b2500cd534ba11e065f5c0a22b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -112,9 +112,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65e0dffd82c2d9a4692971a0d0363b71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: 225
+  thrust: 300
   rb: {fileID: 54159994710840840}
   paintSplat: {fileID: 1167293702201316, guid: f72700aa1f318e34f9ddec7ba4fb0a25, type: 2}
+  destroyAlarmDuration: 300
 --- !u!135 &135712823465596976
 SphereCollider:
   m_ObjectHideFlags: 1
