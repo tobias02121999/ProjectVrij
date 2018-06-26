@@ -16,10 +16,9 @@ public class scr_paintballGun : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		if (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.LTouch)
+		if (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.LTouch) >= .25 || Input.GetMouseButton(0))
 		{
-			GameObject i = Instantiate(projectile, transform) as GameObject;
-			i.GetComponent<RigidBody>().
+			Instantiate(projectile, transform.position, transform.rotation);
 		}
 	}
 }

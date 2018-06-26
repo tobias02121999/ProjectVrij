@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Hands
   - Lever
+  - PaintSurface
   layers:
   - Default
   - TransparentFX
