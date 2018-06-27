@@ -6,6 +6,7 @@ public class scr_shrek : MonoBehaviour {
 
     // Initialize the public variables
     public float movementSpeed;
+    public bool shrekkerinoEnabled;
 
 	// Use this for initialization
 	void Start ()
@@ -16,6 +17,7 @@ public class scr_shrek : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        transform.position += transform.forward * movementSpeed;
+        if (shrekkerinoEnabled)
+            transform.position += transform.up * movementSpeed;
 	}
 }
