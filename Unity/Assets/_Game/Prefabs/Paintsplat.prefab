@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65e0dffd82c2d9a4692971a0d0363b71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: 300
+  thrust: 500
   rb: {fileID: 54159994710840840}
   paintSplat: {fileID: 1167293702201316, guid: f72700aa1f318e34f9ddec7ba4fb0a25, type: 2}
   destroyAlarmDuration: 300

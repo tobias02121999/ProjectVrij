@@ -9,6 +9,7 @@ public class scr_pathFinder : MonoBehaviour {
     public int[] waypointAlarms;
     public AudioSource[] waypointAudioPlayers;
     public GameObject[] waypointObjects;
+    public GameObject[] waypointObjectsDeactivate;
     public float movementSpeed;
     public float rotationSpeed;
 
@@ -56,6 +57,7 @@ public class scr_pathFinder : MonoBehaviour {
                 {
                     currentWaypoint++;
                     waypointObjects[currentWaypoint].SetActive(true);
+                    waypointObjectsDeactivate[currentWaypoint].SetActive(false);
                 }
             }
         }

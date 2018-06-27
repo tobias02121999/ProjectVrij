@@ -10,9 +10,14 @@ public class scr_webcamMaterial : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
+        WebCamDevice[] devices = WebCamTexture.devices;
         WebCamTexture webcamTexture = new WebCamTexture();
+
+        webcamTexture.deviceName = devices[1].name;
         targetMaterial.mainTexture = webcamTexture;
         webcamTexture.Play();
+
+        Debug.Log(devices[1].name);
 	}
 	
 	// Update is called once per frame
